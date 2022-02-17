@@ -829,6 +829,15 @@ final public class InAppWebView extends InputAwareWebView {
       }
     });
 
+    String js = "document.addEventListener('DOMContentLoaded',function(o){ " +
+            "  window." + JavaScriptBridgeInterface.name + ".callHandler('injectJs', window.location.href);" +
+            "  })";
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+      evaluateJavascript(js, (ValueCallback<String>) null);
+    } else {
+      loadUrl("javascript:" + js);
+    }
+
     gestureDetector = new GestureDetector(this.getContext(), new GestureDetector.SimpleOnGestureListener() {
       @Override
       public boolean onSingleTapUp(MotionEvent ev) {

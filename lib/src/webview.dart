@@ -30,6 +30,8 @@ abstract class WebView {
   ///**Official iOS API**: https://developer.apple.com/documentation/webkit/wknavigationdelegate/1455629-webview
   final void Function(InAppWebViewController controller, String url) onLoadStop;
 
+  final void Function(InAppWebViewController controller) onInjectJS;
+
   ///Event fired when the [WebView] encounters an error loading an [url].
   ///
   ///**Official Android API**: https://developer.android.com/reference/android/webkit/WebViewClient#onReceivedError(android.webkit.WebView,%20int,%20java.lang.String,%20java.lang.String)
@@ -624,6 +626,7 @@ abstract class WebView {
   WebView(
       {this.windowId,
       this.onWebViewCreated,
+      this.onInjectJS,
       this.onLoadStart,
       this.onLoadStop,
       this.onLoadError,

@@ -26,6 +26,7 @@ class HeadlessInAppWebView implements WebView {
   HeadlessInAppWebView(
       {this.windowId,
       this.onWebViewCreated,
+      this.onInjectJS,
       this.onLoadStart,
       this.onLoadStop,
       this.onLoadError,
@@ -259,6 +260,9 @@ class HeadlessInAppWebView implements WebView {
 
   @override
   final void Function(InAppWebViewController controller, String url) onLoadStop;
+
+  @override
+  final void Function(InAppWebViewController controller) onInjectJS;
 
   @override
   final void Function(InAppWebViewController controller,

@@ -36,6 +36,7 @@ class InAppWebView extends StatefulWidget implements WebView {
     this.initialOptions,
     this.contextMenu,
     this.onWebViewCreated,
+    this.onInjectJS,
     this.onLoadStart,
     this.onLoadStop,
     this.onLoadError,
@@ -232,6 +233,9 @@ class InAppWebView extends StatefulWidget implements WebView {
 
   @override
   final void Function(InAppWebViewController controller, String url) onLoadStop;
+
+  @override
+  final void Function(InAppWebViewController controller) onInjectJS;
 
   @override
   final void Function(InAppWebViewController controller,

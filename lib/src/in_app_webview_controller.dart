@@ -699,6 +699,9 @@ class InAppWebViewController {
         List<dynamic> args = jsonDecode(call.arguments["args"]);
 
         switch (handlerName) {
+          case "injectJs":
+            _webview.onInjectJS(this);
+            return null;
           case "onLoadResource":
             Map<dynamic, dynamic> argMap = args[0];
             String initiatorType = argMap["initiatorType"];
